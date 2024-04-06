@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  api:
+    build: ./API
+    container_name: fastapi_endpoint
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - mongodb
+  hash_db_updater:
+    build: ./hash_db_updater
+    container_name: hash_db_updater
+    depends_on:
+      - redis
+      - mongodb
+  geolocation_updater:
+    build: ./geolocation_updater
+    container_name: geolocation_updater
+    depends_on:
+      - redis
+      - mongodb
+  redis:
+    image: redis:7.2.4-alpine
+    container_name: redis_db
+    expose:
+      - 6379
+  mongodb:
+    image: mongo:latest
+    container_name: mongo_db
+    expose:
+      - 27017

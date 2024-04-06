@@ -1,0 +1,1 @@
+uvicorn url_shortener.app:app --host 0.0.0.0 --port 8000 --workers 1 --use-colors --no-server-header --no-date-header --limit-concurrency 10000 --backlog 1000 --limit-max-requests 5000

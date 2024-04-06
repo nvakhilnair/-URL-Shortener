@@ -1,0 +1,13 @@
+TIMEOUT = 0.5
+
+[redis]
+host = "redis"
+port = 6379
+database = 1
+
+[mongo]
+host = "mongodb"
+port = 27017
+database = "test_db"
+url_collection = "url_hashes"
+ip_collection = "ip_details"
