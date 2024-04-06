@@ -1,83 +1,43 @@
+# Project: URL Shortener
 
-# Text Sentiment Classification
+This project is a URL shortener that takes any input URL and generates a shortened version of it. Additionally, it processes the user's IP address to determine their location, storing this information as well.
 
-API classifies textual data into positive, negative, and neutral based on the polarity score.
-The model uses the Vader model for the classification which is a lexicon-based model.
+## Tech Stack
 
-## Docker
+- Redis
+- Python
+- FastAPI
+- Docker
+- MongoDB
 
-To containerize the application using Docker, follow these steps:
+## Installation and Running
 
-1. Build the Docker image: 
-    ```
-    docker build -t text-sentiment-classification .
-    ```
-2. Run the Docker container: 
-    ```
-    docker run -d -p 8000:8000 text-sentiment-classification
-    ```
+To run the project, simply execute the following command:
 
-## Starting the Application
-
-To start the application, you can use the provided batch (.bat) or shell (.sh) files:
-
-- For Windows (.bat): 
-    ```
-    start_app.bat
-    ```
-- For Unix-based systems (.sh):
-    ```
-    ./start_app.sh
-    ```
-
-Ensure that you have installed the required dependencies mentioned in `requirements.txt` before starting the application.
+```
+docker-compose up
+```
 
 
 ## Usage
 
-To utilize the text processing API provided by this project, you can send a `GET` request to the `/classify` endpoint. Below is an example `curl` command demonstrating how to use the endpoint:
+The project provides a user interface where users can paste their URLs. The shortened URL will be immediately visible on the homepage itself.
 
-### using curl
-```
-curl 'http://127.0.0.1:8000/classify/?input_text=Hello%20my%20name%20is%20akhil&preprocess=false
-```
+## Hashing Algorithm
 
-### using python
-
-```
-import requests
-
-url = 'http://127.0.0.1:8000/classify/'
-params = {
-    'input_text': 'Hello my name is akhil',
-    'preprocess': 'false'
-}
-response = requests.get(url, params=params)
-```
-
-## Tech Stack
-
-- Python
-- FastAPI
-- Uvicorn
-- HTML
-- CSS
-- Javascript
+The project utilizes Google's CityHash hashing algorithm for URL shortening.
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
 
+## Feedback and Support
 
-## Feedback
+For any feedback, please reach out to us at [madewithpy009@gmail.com](mailto:madewithpy009@gmail.com).
 
-If you have any feedback, please reach out to us at madewithpy009@gmail.com
+## 🚀 About Me
 
-For support, email madewithpy009@gmail.com.## 🚀 About Me
-- 👋 Hi, I’m @nvakhilnair
-- 👀 I’m interested in Data Science,Machine learning, Data Mining, Data Visualization and Programing
+- 👋 Hi, I’m [@nvakhilnair](https://github.com/nvakhilnair)
+- 👀 I’m interested in Data Science, Machine learning, Data Mining, Data Visualization, and Programming
 - 🌱 I’m currently open to work
-- 📫 How to reach me https://www.linkedin.com/in/akhilnvnair
-## Authors
-
-- [@nvakhilnair](https://github.com/nvakhilnair)
+- 📫 How to reach me: [LinkedIn](https://www.linkedin.com/in/akhilnvnair)
