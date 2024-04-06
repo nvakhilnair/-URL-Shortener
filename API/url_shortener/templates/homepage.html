@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to URL Shortener</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fcfcfc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            color: #333;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 8px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        #shortenedUrl {
+            padding: 20px; /* Add padding */
+            font-family: Arial, sans-serif; /* Change font */
+            font-size: 1.2rem; /* Adjust font size */
+            color: #666; /* Change text color */
+        }
+        #logo {
+            width: 150px; /* Adjust the width as needed */
+            opacity: 0.8; /* Adjust the opacity to blend with the background */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to URL Shortener</h1>
+        <p>Create shortened URLs and track their usage.</p>
+        <form id="urlForm">
+            <input type="text" id="urlInput" placeholder="Enter URL to shorten" required>
+            <input type="submit" value="Shorten">
+        </form>
+        <div id="shortenedUrl"></div>
+    </div>
+    <script>
+        document.getElementById("urlForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var url = document.getElementById("urlInput").value;
+            fetch("/get_shorten_url/?query=" + encodeURIComponent(url))
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response data here
+                    var shortenedUrl = data.tiny_url;
+                    var linkElement = document.createElement("a");
+                    linkElement.href = shortenedUrl;
+                    linkElement.textContent = shortenedUrl;
+                    document.getElementById("shortenedUrl").innerHTML = "Shortened URL: ";
+                    document.getElementById("shortenedUrl").appendChild(linkElement);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>

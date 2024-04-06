@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+redis
+pymongo
+python-redis-lock
+dynaconf
